@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacturaCreateDlg" widgetVar="FacturaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFacturaTitle}">
+            <h:form id="FacturaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_facturaPK_reservacionesClienteIdcliente}" for="facturaPK_reservacionesClienteIdcliente" />
+                        <p:inputText id="facturaPK_reservacionesClienteIdcliente" value="#{facturaController.selected.facturaPK.reservacionesClienteIdcliente}" title="#{bundle.CreateFacturaTitle_facturaPK_reservacionesClienteIdcliente}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_facturaPK_reservacionesClienteIdcliente}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_facturaPK_reservacionesSucursalIdubicacion}" for="facturaPK_reservacionesSucursalIdubicacion" />
+                        <p:inputText id="facturaPK_reservacionesSucursalIdubicacion" value="#{facturaController.selected.facturaPK.reservacionesSucursalIdubicacion}" title="#{bundle.CreateFacturaTitle_facturaPK_reservacionesSucursalIdubicacion}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_facturaPK_reservacionesSucursalIdubicacion}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_facturaPK_reservacionesIdreservaciones}" for="facturaPK_reservacionesIdreservaciones" />
+                        <p:inputText id="facturaPK_reservacionesIdreservaciones" value="#{facturaController.selected.facturaPK.reservacionesIdreservaciones}" title="#{bundle.CreateFacturaTitle_facturaPK_reservacionesIdreservaciones}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_facturaPK_reservacionesIdreservaciones}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_facturaPK_idfactura}" for="facturaPK_idfactura" />
+                        <p:inputText id="facturaPK_idfactura" value="#{facturaController.selected.facturaPK.idfactura}" title="#{bundle.CreateFacturaTitle_facturaPK_idfactura}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_facturaPK_idfactura}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_fechainicial}" for="fechainicial" />
+                        <p:inputText id="fechainicial" value="#{facturaController.selected.fechainicial}" title="#{bundle.CreateFacturaTitle_fechainicial}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_fechainicial}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_fechafinal}" for="fechafinal" />
+                        <p:inputText id="fechafinal" value="#{facturaController.selected.fechafinal}" title="#{bundle.CreateFacturaTitle_fechafinal}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_fechafinal}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{facturaController.selected.descripcion}" title="#{bundle.CreateFacturaTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.CreateFacturaLabel_tarifa}" for="tarifa" />
+                        <p:inputText id="tarifa" value="#{facturaController.selected.tarifa}" title="#{bundle.CreateFacturaTitle_tarifa}" required="true" requiredMessage="#{bundle.CreateFacturaRequiredMessage_tarifa}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{facturaController.create}" value="#{bundle.Save}" update="display,:FacturaListForm:datalist,:growl" oncomplete="handleSubmit(args,'FacturaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FacturaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

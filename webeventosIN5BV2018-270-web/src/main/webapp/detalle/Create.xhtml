@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleCreateDlg" widgetVar="DetalleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleTitle}">
+            <h:form id="DetalleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleLabel_detallePK_iddetalle}" for="detallePK_iddetalle" />
+                        <p:inputText id="detallePK_iddetalle" value="#{detalleController.selected.detallePK.iddetalle}" title="#{bundle.CreateDetalleTitle_detallePK_iddetalle}" required="true" requiredMessage="#{bundle.CreateDetalleRequiredMessage_detallePK_iddetalle}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleLabel_detallePK_facturaReservacionesIdreservaciones}" for="detallePK_facturaReservacionesIdreservaciones" />
+                        <p:inputText id="detallePK_facturaReservacionesIdreservaciones" value="#{detalleController.selected.detallePK.facturaReservacionesIdreservaciones}" title="#{bundle.CreateDetalleTitle_detallePK_facturaReservacionesIdreservaciones}" required="true" requiredMessage="#{bundle.CreateDetalleRequiredMessage_detallePK_facturaReservacionesIdreservaciones}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleLabel_detallePK_facturaIdfactura}" for="detallePK_facturaIdfactura" />
+                        <p:inputText id="detallePK_facturaIdfactura" value="#{detalleController.selected.detallePK.facturaIdfactura}" title="#{bundle.CreateDetalleTitle_detallePK_facturaIdfactura}" required="true" requiredMessage="#{bundle.CreateDetalleRequiredMessage_detallePK_facturaIdfactura}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleLabel_detallePK_facturaReservacionesSucursalIdubicacion}" for="detallePK_facturaReservacionesSucursalIdubicacion" />
+                        <p:inputText id="detallePK_facturaReservacionesSucursalIdubicacion" value="#{detalleController.selected.detallePK.facturaReservacionesSucursalIdubicacion}" title="#{bundle.CreateDetalleTitle_detallePK_facturaReservacionesSucursalIdubicacion}" required="true" requiredMessage="#{bundle.CreateDetalleRequiredMessage_detallePK_facturaReservacionesSucursalIdubicacion}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleLabel_detallePK_facturaReservacionesClienteIdcliente}" for="detallePK_facturaReservacionesClienteIdcliente" />
+                        <p:inputText id="detallePK_facturaReservacionesClienteIdcliente" value="#{detalleController.selected.detallePK.facturaReservacionesClienteIdcliente}" title="#{bundle.CreateDetalleTitle_detallePK_facturaReservacionesClienteIdcliente}" required="true" requiredMessage="#{bundle.CreateDetalleRequiredMessage_detallePK_facturaReservacionesClienteIdcliente}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleController.create}" value="#{bundle.Save}" update="display,:DetalleListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetalleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

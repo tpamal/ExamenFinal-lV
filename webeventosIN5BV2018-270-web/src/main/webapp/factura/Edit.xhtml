@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacturaEditDlg" widgetVar="FacturaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFacturaTitle}">
+            <h:form id="FacturaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_facturaPK_reservacionesClienteIdcliente}" for="facturaPK_reservacionesClienteIdcliente" />
+                        <p:inputText id="facturaPK_reservacionesClienteIdcliente" value="#{facturaController.selected.facturaPK.reservacionesClienteIdcliente}" title="#{bundle.EditFacturaTitle_facturaPK_reservacionesClienteIdcliente}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_facturaPK_reservacionesClienteIdcliente}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_facturaPK_reservacionesSucursalIdubicacion}" for="facturaPK_reservacionesSucursalIdubicacion" />
+                        <p:inputText id="facturaPK_reservacionesSucursalIdubicacion" value="#{facturaController.selected.facturaPK.reservacionesSucursalIdubicacion}" title="#{bundle.EditFacturaTitle_facturaPK_reservacionesSucursalIdubicacion}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_facturaPK_reservacionesSucursalIdubicacion}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_facturaPK_reservacionesIdreservaciones}" for="facturaPK_reservacionesIdreservaciones" />
+                        <p:inputText id="facturaPK_reservacionesIdreservaciones" value="#{facturaController.selected.facturaPK.reservacionesIdreservaciones}" title="#{bundle.EditFacturaTitle_facturaPK_reservacionesIdreservaciones}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_facturaPK_reservacionesIdreservaciones}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_facturaPK_idfactura}" for="facturaPK_idfactura" />
+                        <p:inputText id="facturaPK_idfactura" value="#{facturaController.selected.facturaPK.idfactura}" title="#{bundle.EditFacturaTitle_facturaPK_idfactura}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_facturaPK_idfactura}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_fechainicial}" for="fechainicial" />
+                        <p:inputText id="fechainicial" value="#{facturaController.selected.fechainicial}" title="#{bundle.EditFacturaTitle_fechainicial}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_fechainicial}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_fechafinal}" for="fechafinal" />
+                        <p:inputText id="fechafinal" value="#{facturaController.selected.fechafinal}" title="#{bundle.EditFacturaTitle_fechafinal}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_fechafinal}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{facturaController.selected.descripcion}" title="#{bundle.EditFacturaTitle_descripcion}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.EditFacturaLabel_tarifa}" for="tarifa" />
+                        <p:inputText id="tarifa" value="#{facturaController.selected.tarifa}" title="#{bundle.EditFacturaTitle_tarifa}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_tarifa}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{facturaController.update}" value="#{bundle.Save}" update="display,:FacturaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FacturaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FacturaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
